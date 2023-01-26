@@ -5,7 +5,9 @@ $(document).ready(function () {
   $.each(includes, function () {
     try {
       var html = "./components/" + $(this).data("include") + ".html";
+      var css = "./styles/" + $(this).data("include") + ".css";
       var js = "./js/" + $(this).data("include") + ".js";
+      $("head").append(`<link rel="stylesheet" href="${css}" />`);
       $(this).load(html, () => {
         $.getScript(js);
       });
