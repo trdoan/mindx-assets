@@ -2,7 +2,7 @@
   console.log("product-list.js loaded");
   const MY_NODE = document.getElementById("product-list");
 
-  const getPokemonList = async () => {
+  const getProductList = async () => {
     try {
       renderLoadingItems();
       const { data } = await axios({
@@ -16,8 +16,8 @@
     }
   };
 
-  const renderProductList = (pokemonList) => {
-    const htmlString = pokemonList.reduce((accHTML, item) => {
+  const renderProductList = (productList) => {
+    const htmlString = productList.reduce((accHTML, item) => {
       return (accHTML += `
       <div class="card product-item" style="width: 18rem;">
         <img src=${`${item.image}`} class="card-img-top" alt="...">
@@ -56,11 +56,11 @@
     MY_NODE.innerHTML = htmlString;
   };
 
-  const fetchPokemenList = getPokemonList();
+  const fetchProductList = getProductList();
   // SUCCESS
-  fetchPokemenList.then((data) => {
+  fetchProductList.then((data) => {
     renderProductList(data);
   });
   // ERROR
-  fetchPokemenList.catch((error) => {});
+  fetchProductList.catch((error) => {});
 }
